@@ -33,6 +33,11 @@ class MgggGraph(object):
         self.loaded_polymap = loaded_polymap
         self.neighbors = neighbors
 
+    def get_vertex_attrs(self, geoid, attrs=[]):
+        """ Get the attributes of the vertex with id geoid
+        """
+        return self.shape_df.loc[geoid, attrs or pd.IndexSlice[:]]
+
     def export_graph(self, output_path='graph.csv'):
         """ Export csv to output_path.
         """

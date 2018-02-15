@@ -42,6 +42,7 @@ def TwoStepGraph(shp_path, id_column):
     data['CENTROID_YCOORDINATES'] = data.apply(
         lambda x: x['geometry'].centroid[1], 1
     )
+    data.set_index(id_column, inplace=True)
 
     loaded_geodata = ps.open(shp_path)
     loaded_polymap = create_polymap(shp_path,
